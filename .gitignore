@@ -1,0 +1,11 @@
+.env
+.env.*
+*.json
+*.csv
+*.pdf
+data/
+output/
+__pycache__/
+*.pyc
+.venv/
+.vs/

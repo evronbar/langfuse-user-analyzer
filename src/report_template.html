@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src data:; style-src 'unsafe-inline'">
+<title>מה למדנו על המשתמשים?</title>
+<style>
+  @page { size: A4; margin: 12mm 14mm; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 11pt/1.45 "DejaVu Sans", Arial, sans-serif; color: #102b4d;
+         print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .sheet + .sheet { break-before: page; }
+  .hero { padding: 21px 25px; border-radius: 17px; color: #fff;
+          background: linear-gradient(112deg, #102947, #12467d 72%, #116880); }
+  .eyebrow { color: #bcecf5; font-size: 9pt; font-weight: 700; }
+  h1, h2, h3, p { margin: 0; }
+  h1 { font-size: 25pt; line-height: 1.2; margin: 5px 0 7px; }
+  h2 { font-size: 15pt; line-height: 1.3; margin-bottom: 3px; }
+  h3 { font-size: 10pt; }
+  .hero p { font-size: 10pt; color: #e1f3ff; max-width: 95%; }
+  .section { margin-top: 14px; break-inside: avoid; }
+  .flex { display: flex; gap: 9px; }
+  .flex > * { flex: 1 1 0; min-width: 0; }
+  .card { background: #f0f6fc; border: 1px solid #dce8f4; border-radius: 11px; padding: 9px 12px; }
+  .card b { display: block; font-size: 21pt; line-height: 1.3; color: #135a9e; }
+  .card small { color: #435e7b; display: block; font-size: 9pt; }
+  .friction-cards .card { padding-inline: 8px; }
+  .friction-cards .rate-detail { font-size: 8pt; white-space: nowrap; }
+  .panel { border: 1px solid #dce8f4; border-radius: 13px; padding: 10px 14px; }
+  .chart { display: block; width: 100%; max-height: 305px; object-fit: contain; margin-top: 3px; }
+  .note { font-size: 9pt; color: #435e7b; }
+  .band { padding: 8px 11px; background: #eaf5fb; border-inline-start: 3px solid #1679a9;
+          border-radius: 7px; margin-top: 7px; }
+  .metric { margin: 5px 0 7px; break-inside: avoid; }
+  .metric-head { display: grid; grid-template-columns: minmax(0, 1fr) max-content;
+                 align-items: center; column-gap: 8px; font-size: 9.5pt; }
+  .metric-count { color: #135a9e; white-space: nowrap; unicode-bidi: isolate; font-variant-numeric: tabular-nums; }
+  .track { margin-top: 3px; height: 6px; overflow: hidden; border-radius: 6px; background: #dce9f5; }
+  .fill { height: 100%; background: linear-gradient(270deg, #1765af, #2e9bac); border-radius: 6px; }
+  .coverage { display: flex; flex-wrap: wrap; gap: 3px 12px; margin-top: 6px; }
+  .coverage .metric { flex: 0 1 calc(50% - 6px); }
+  .attention { display: flex; align-items: center; gap: 12px; }
+  .attention bdi { font-size: 18pt; font-weight: 700; color: #135a9e; white-space: nowrap; }
+  .footer { display: flex; justify-content: space-between; color: #526b84; font-size: 8pt;
+            padding-top: 6px; border-top: 1px solid #dce8f4; margin-top: 14px; }
+</style>
+</head>
+<body>
+<article class="sheet">
+  <header class="hero">
+    <div class="eyebrow">מחקר שימוש · תמונת מצב</div>
+    <h1>מה למדנו על המשתמשים?</h1>
+    <p>$overview</p>
+  </header>
+  <section class="section flex">$kpis</section>
+  <section class="section panel">
+    <h2>על מה המשתמשים שואלים?</h2>
+    <p class="note">מספר פניות לפי נושא. פנייה יכולה להשתייך לכמה נושאים.</p>
+    $chart
+    <p class="note band">$topic_population</p>
+  </section>
+  <section class="section panel">
+    <h2>מה המשתמשים ניסו להבין או שיתפו?</h2>
+    <p class="note">הממצאים השכיחים לפי מספר המשתמשים המזוהים, מתוך $known_users במדגם.</p>
+    $findings
+  </section>
+  <footer class="footer"><span>$source</span><span>01 · נושאים ומצב המשתמשים</span></footer>
+</article>
+<article class="sheet">
+  <header class="hero">
+    <div class="eyebrow">מחקר שימוש · איכות המענה</div>
+    <h1>חיכוך ותסכול</h1>
+    <p>$friction_overview</p>
+  </header>
+  <section class="section">
+    <h2>איפה השיחה נתקעה?</h2>
+    <div class="flex friction-cards">$friction</div>
+    <p class="note band">שיעורי ההמשך מבוססים על תורים שבהם תועדה הודעת המשך סמוכה. הסתייגות אחרי הפניה לרופא היא אות לבדיקת המענה. התאמת ההפניה דורשת עיון בשיחה. מקף מסמן מדד ללא בסיס זמין.</p>
+  </section>
+  <section class="section panel">
+    <h2>איך טופלו רכיבי הבקשה?</h2>
+    <p class="note">$coverage_intro</p>
+    <div class="coverage">$coverage</div>
+  </section>
+  <section class="section band attention">
+    <bdi dir="ltr">$attention_percent</bdi>
+    <div><h3>אותות מצוקה ודחיפות</h3><p class="note">$attention_note</p></div>
+  </section>
+  <footer class="footer"><span>$source</span><span>02 · חיכוך ואותות מהשיחה</span></footer>
+</article>
+</body>
+</html>

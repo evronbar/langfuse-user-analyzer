@@ -1,0 +1,14 @@
+.env
+.env.*
+**/.env
+**/.env.*
+**/*.json
+**/*.csv
+**/*.pdf
+**/data/
+**/output/
+**/__pycache__/
+**/*.pyc
+.git
+.venv
+.vs
